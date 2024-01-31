@@ -8,4 +8,6 @@ function addTodo(){
   todoList.push(todoName)
 
   console.log(todoList)
+
+  inputValue.value =''
 }
