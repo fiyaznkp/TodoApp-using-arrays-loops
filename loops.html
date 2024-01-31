@@ -28,12 +28,51 @@
 // console.log(randomNumber)
 
 
-let TodoList = ['make dinner' ,'wash dishes','watching youtube']
+// let TodoList = ['make dinner' ,'wash dishes','watching youtube']
 
-for(i =0;i< TodoList.length;i++){
-    let value = TodoList[i]
-    console.log(value)
+// for(i =0;i< TodoList.length;i++){
+//     let value = TodoList[i]
+//     console.log(value)
+// }
+
+let numbers = [1,2,3,4]
+
+let sum =0
+
+for(i=0;i<numbers.length;i++){
+    let num = numbers[i]
+
+    sum += num
+
+   
 }
+// console.log(sum)
+
+
+ let numbersDoubled =[]
+
+ for(i =0;i<numbers.length;i++){
+    let numdoubled = numbers[i]
+
+    numbersDoubled.push(numdoubled *2)
+ }
+
+//  console.log(numbersDoubled)
+
+let numbersTripled =[]
+let total =0    
+
+for(i=0;i<numbers.length;i++){
+    let numTripled = numbers[i]
+    numbersTripled.push(numTripled * 3)
+   total +=numbersTripled[i]
+    
+}
+
+console.log(numbersTripled)
+console.log(total)
+
+
 
 
 
