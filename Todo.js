@@ -1,41 +1,85 @@
-let todoList =[{name:'make breakfast',dueDate:'2024-01-24'},{ name:'watch youtube',dueDate:'2024-02-02'}]
 
 
-showTodo()
-function showTodo(){
+// showTodo()
+// function showTodo(){
   
-  let htmlvalue =''
-  for (i=0;i<todoList.length;i++){
-    let todoObject = todoList[i]
+//   let htmlvalue =''
+//   for (let i=0;i<todoList.length;i++){
+//     let todoObject = todoList[i]
 
 
-    let{name,dueDate}=todoObject
+//     let{name,dueDate}=todoObject
 
-    let html = `<div> ${name}</div>
-     <div>${dueDate}</div>
-     <button onclick="todoList.splice(${i}, 1)
-    showTodo()"
-    class='delete-btn
-    >Delete</button> `
-    htmlvalue += html 
+//     let html = `<div> ${name}</div>
+//      <div>${dueDate}</div>
+//      <button onclick="todoList.splice(${i}, 1)
+//     showTodo()"
+//     class='delete-btn
+//     >Delete</button> `
+//     htmlvalue += html 
+//   }
+//   document.querySelector('.div').innerHTML = htmlvalue
+// }
+
+// function addTodo(){
+//     const inputValue = document.querySelector('.input-box')
+
+//     const dateValue = document.querySelector('.due-Date')
+
+//     const date= dateValue.value
+
+//   let todoName=  inputValue.value
+
+//   todoList.push({name:todoName ,dueDate:date})
+
+//   console.log(todoList)
+
+//   inputValue.value =''
+
+//   showTodo()
+// }
+
+let todoList =JSON.parse(localStorage.getItem('todoList')) || [{
+  name:'make dinner',
+  dueDate:'2024-01-24'
+},{
+  name:'workout',
+  dueDate:'2024-01-22'
+}]
+showTodo()
+
+function showTodo() {
+  let htmlvalue = '';
+
+  for (let i = 0; i < todoList.length; i++) {
+    let todoObject = todoList[i];
+    let { name, dueDate } = todoObject;
+
+    let html = `
+      <div>${name}</div>
+      <div>${dueDate}</div>
+      <button onclick="(function(index) { todoList.splice(index, 1); showTodo(); })(${i})" class='delete-btn'>Delete</button>
+    `;
+
+    htmlvalue += html;
   }
-  document.querySelector('.div').innerHTML = htmlvalue
+
+  document.querySelector('.div').innerHTML = htmlvalue;
 }
 
-function addTodo(){
-    const inputValue = document.querySelector('.input-box')
+function addTodo() {
+  const inputValue = document.querySelector('.input-box');
+  const dateValue = document.querySelector('.due-Date');
+  const date = dateValue.value;
+  let todoName = inputValue.value;
 
-    const dateValue = document.querySelector('.due-Date')
+  todoList.push({ name: todoName, dueDate: date });
 
-    const date= dateValue.value
+  inputValue.value = '';
 
-  let todoName=  inputValue.value
-
-  todoList.push({name:todoName ,dueDate:date})
-
-  console.log(todoList)
-
-  inputValue.value =''
-
-  showTodo()
+  showTodo();
+  saveToStorage()
+}
+function saveToStorage(){
+  localStorage.setItem('todoList',JSON.stringify(todoList))
 }
