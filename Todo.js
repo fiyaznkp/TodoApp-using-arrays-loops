@@ -24,21 +24,13 @@ function showTodo() {
 
   })
 
-  // for (let i = 0; i < todoList.length; i++) {
-  //   let todoObject = todoList[i];
-  //   let { name, dueDate } = todoObject;
-
-  //   let html = `
-  //     <div>${name}</div>
-  //     <div>${dueDate}</div>
-  //     <button onclick="(function(index) { todoList.splice(index, 1); showTodo(); })(${i})" class='delete-btn'>Delete</button>
-  //   `;
-
-  //   htmlvalue += html;
-  // }
+  
 
   document.querySelector('.div').innerHTML = htmlvalue;
 }
+document.querySelector('.add-button').addEventListener('click',()=>{
+  addTodo()
+})
 
 function addTodo() {
   const inputValue = document.querySelector('.input-box');
